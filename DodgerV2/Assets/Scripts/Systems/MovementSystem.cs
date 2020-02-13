@@ -1,27 +1,42 @@
-﻿using UnityEngine;
-using Unity.Entities;
-using Unity.Jobs;
-using Unity.Transforms;
+﻿using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Transforms;
 
 public class MovementSystem : ComponentSystem
 {
+    //Outside of these coordinates Entities are no longer within the "playspace"
+    float LowestX = -15;
+    float HighestX = 15;
+
+    float HighestY = 25;
+    float LowestY = -12f;
+
     protected override void OnUpdate()
     {
         //Cache this.
-        var deltaTime = Time.DeltaTime;
+        float deltaTime = Time.DeltaTime;
 
         //For every entity with a MovementComponent.
-        Entities.ForEach((ref Translation translation, ref MovementComponent movementComponent) =>
+        Entities.ForEach((Entity entity, ref Translation translation, ref Rotation rotation, ref MovementComponent movementComponent) =>
         {
-            //Calculate movement delta
-            Vector3 deltaPositionVec3 = movementComponent.MovementSpeed * movementComponent.RelativeMovementDirection * deltaTime;
+            //Calculate movementDirection
+            float3 movementDirection = math.mul(rotation.Value, movementComponent.RelativeMovementDirection);
 
-            float3 deltaPositionf3 = new float3(deltaPositionVec3.x, deltaPositionVec3.y, deltaPositionVec3.z);
+            float3 deltaPosition = movementDirection * movementComponent.MovementSpeed * deltaTime;
 
-            translation.Value += deltaPositionf3;
+            translation.Value += deltaPosition;
 
+            //Check if we are still inside the playspace.
+            if (IsOutsidePlaySpace(translation))
+            {
+                PostUpdateCommands.AddComponent(entity, typeof(DestroyComponent));
+            }
         });
 
+    }
+
+    private bool IsOutsidePlaySpace(Translation translation)
+    {
+        return translation.Value.x <= LowestX || translation.Value.x > HighestX || translation.Value.y < LowestY || translation.Value.y > HighestY;
     }
 }
