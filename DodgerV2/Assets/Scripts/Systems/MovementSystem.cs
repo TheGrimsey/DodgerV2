@@ -17,7 +17,7 @@ public class MovementSystem : ComponentSystem
         float deltaTime = Time.DeltaTime;
 
         //For every entity with a MovementComponent.
-        Entities.ForEach((Entity entity, ref Translation translation, ref Rotation rotation, ref MovementComponent movementComponent) =>
+        Entities.WithNone(typeof(DestroyComponent)).WithAllReadOnly(typeof(MovementComponent)).ForEach((Entity entity, ref Translation translation, ref Rotation rotation, ref MovementComponent movementComponent) =>
         {
             //Calculate movementDirection
             float3 movementDirection = math.mul(rotation.Value, movementComponent.RelativeMovementDirection);

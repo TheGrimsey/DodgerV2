@@ -1,24 +1,41 @@
 ﻿using UnityEngine;
+using Unity.Entities;
 
 public class BulletTrigger : MonoBehaviour
 {
-    static int EnemyLayer = -1;
+    //Cached enemylayer.
+    static int enemyLayer = -1;
+
+    //Our gameobjectentity.
+    GameObjectEntity gameObjectEntity;
+
+    //Cached scorekeeper.
+    public ScoreKeeper scoreKeeper;
 
     private void Start()
     {
         //Cache EnemyLayer if we haven't already.
-        if (EnemyLayer == -1)
+        if (enemyLayer == -1)
         {
-            EnemyLayer = LayerMask.NameToLayer("Enemy");
+            enemyLayer = LayerMask.NameToLayer("Enemy");
         }
+
+        gameObjectEntity = GetComponent<GameObjectEntity>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("TRIGGER!");
-        if(other.gameObject.layer == EnemyLayer)
+        //If we hit an enemy destroy it and ourselves.
+        if(other.gameObject.layer == enemyLayer)
         {
-            Destroy(other.gameObject);
+            GameObjectEntity enemyObjEntity = other.GetComponent<GameObjectEntity>();
+            if(enemyObjEntity != null)
+            {
+                enemyObjEntity.EntityManager.AddComponent<DestroyComponent>(enemyObjEntity.Entity);
+                gameObjectEntity.EntityManager.AddComponent<DestroyComponent>(gameObjectEntity.Entity);
+
+                scoreKeeper.AddScore(scoreKeeper.ScoreDestroyAsteroid);
+            }
         }
     }
 }

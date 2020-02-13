@@ -6,8 +6,11 @@ public class DestroyEntitySystem : ComponentSystem
     {
         Entities.ForEach((Entity entity, Transform transform, ref DestroyComponent destroycomponent) =>
         {
-            PostUpdateCommands.DestroyEntity(entity);
-            GameObject.Destroy(transform.gameObject);
+            if(transform != null)
+            {
+                GameObject.Destroy(transform.gameObject);
+            }
+            EntityManager.DestroyEntity(entity);
         });
 
     }

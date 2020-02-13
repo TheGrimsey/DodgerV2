@@ -5,27 +5,39 @@ public class PlayerWeapon : MonoBehaviour
 {
     [Header("Weapon Properties")]
     [SerializeField]
-    float WeaponCooldown = 0.1f;
+    float weaponCooldown = 0.1f;
     [SerializeField]
-    float CooldownEnd = 0f;
+    float cooldownEnd = 0f;
 
     [Header("Bullet Spawn")]
     [SerializeField]
-    float YOffset = 1f;
+    float yOffset = 1f;
 
     [SerializeField]
-    public GameObject BulletPrefab;
+    public GameObject bulletPrefab;
+
+    ScoreKeeper scoreKeeper;
+    void Awake()
+    {
+        scoreKeeper = ScoreKeeper.GetScoreKeeper();
+    }
 
     void Fire()
     {
-        if(Time.time >= CooldownEnd)
+        if(Time.time >= cooldownEnd)
         {
-            Vector2 SpawnPosition = transform.position + (YOffset * transform.up);
+            //Calculate where to put the bullet.
+            Vector2 SpawnPosition = transform.position + (yOffset * transform.up);
+            //Use same rotation as player ship.
             Quaternion Rotation = transform.rotation;
 
-            Instantiate(BulletPrefab, SpawnPosition, Rotation);
+            //Spawn bullet.
+            GameObject bullet = Instantiate(bulletPrefab, SpawnPosition, Rotation);
+            //Set scorekeeper to the one we have.
+            bullet.GetComponent<BulletTrigger>().scoreKeeper = scoreKeeper;
 
-            CooldownEnd = Time.time + WeaponCooldown;
+            //Set cooldown.
+            cooldownEnd = Time.time + weaponCooldown;
         }
     }
     public void FireAction(InputAction.CallbackContext context)

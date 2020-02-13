@@ -30,7 +30,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody2D.AddForce(MovementInput * MovementSpeed * Time.deltaTime, ForceMode2D.Impulse);
 
-        _rigidbody2D.AddTorque((RotationInput * TurnSpeedDeg) * Time.deltaTime);
+
+        Vector3 Rotation = new Vector3(0, 0, RotationInput * TurnSpeedDeg * Time.deltaTime);
+        transform.Rotate(Rotation);
     }
 
     public void Move(InputAction.CallbackContext context)

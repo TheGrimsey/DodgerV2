@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2169482838724773321}
   - component: {fileID: 6608660539684134042}
   - component: {fileID: -376694607766910884}
+  - component: {fileID: 4982753379125031023}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb77ddee26ef93b46b75eceb31a00eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 10
-  TurnSpeedDeg: 90
+  MovementSpeed: 8
+  TurnSpeedDeg: 360
   MovementInput: {x: 0, y: 0}
   RotationInput: 0
 --- !u!114 &2169482838724773321
@@ -227,8 +228,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85c4b1d5c38bdd498963dfcea9cab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponCooldown: 0.5
-  CooldownEnd: 0
-  YOffset: 1
-  BulletPrefab: {fileID: 5994968671655944398, guid: e1069111fbc50724f97da7a642d5a096,
+  weaponCooldown: 0.5
+  cooldownEnd: 0
+  yOffset: 1
+  bulletPrefab: {fileID: 5994968671655944398, guid: e1069111fbc50724f97da7a642d5a096,
     type: 3}
+--- !u!114 &4982753379125031023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498108385144890462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973ba0614580ba3418c8c4cb7c486f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
