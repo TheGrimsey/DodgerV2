@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85c4b1d5c38bdd498963dfcea9cab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCooldown: 0.5
+  weaponCooldown: 0.25
   cooldownEnd: 0
   yOffset: 1
   bulletPrefab: {fileID: 5994968671655944398, guid: e1069111fbc50724f97da7a642d5a096,

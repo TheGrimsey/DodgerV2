@@ -10,7 +10,7 @@ public class BulletTrigger : MonoBehaviour
     GameObjectEntity gameObjectEntity;
 
     //Cached scorekeeper.
-    public ScoreKeeper scoreKeeper;
+    public GameKeeper gameKeeper;
 
     private void Start()
     {
@@ -34,7 +34,9 @@ public class BulletTrigger : MonoBehaviour
                 enemyObjEntity.EntityManager.AddComponent<DestroyComponent>(enemyObjEntity.Entity);
                 gameObjectEntity.EntityManager.AddComponent<DestroyComponent>(gameObjectEntity.Entity);
 
-                scoreKeeper.AddScore(scoreKeeper.ScoreDestroyAsteroid);
+                //Add score for destroying asteroid.
+                gameKeeper.scoreKeeper.AddScore(gameKeeper.scoreRewards.ScoreDestroyedAsteroid);
+                gameKeeper.SpawnPopupText(other.transform.position, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString());
             }
         }
     }

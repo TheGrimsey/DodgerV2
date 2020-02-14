@@ -3,23 +3,25 @@
 [RequireComponent(typeof(CircleCollider2D))]
 public class PlayerCollision : MonoBehaviour
 {
-    ScoreKeeper scoreKeeper;
+    GameKeeper gameKeeper;
 
     int enemyLayer = -1;
+
     void Start()
     {
-        scoreKeeper = ScoreKeeper.GetScoreKeeper();
+        gameKeeper = GameKeeper.GetGameKeeper();
+
         enemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    //When a trigger enters our CircleCollider.
+    void OnTriggerEnter2D(Collider2D collider)
     {
         //Check if we collided with an enemy.
-        if (collision.gameObject.layer == enemyLayer)
+        if (collider.gameObject.layer == enemyLayer)
         {
-            scoreKeeper.EndRound();
-
-            //TODO Go to end menu.
+            //Notify gameKeeper we got hit.
+            gameKeeper.OnPlayerHit();
         }
     }
 }

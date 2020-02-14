@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8e285869a7ce84a885639a2140c06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupTextPrefab: {fileID: 0}
   ScoreText: {fileID: 9155297695969927724}
 --- !u!1 &8201347447617417006
 GameObject:

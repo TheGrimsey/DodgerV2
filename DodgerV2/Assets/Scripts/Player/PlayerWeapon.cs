@@ -16,10 +16,10 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField]
     public GameObject bulletPrefab;
 
-    ScoreKeeper scoreKeeper;
+    GameKeeper gameKeeper;
     void Awake()
     {
-        scoreKeeper = ScoreKeeper.GetScoreKeeper();
+        gameKeeper = GameKeeper.GetGameKeeper();
     }
 
     void Fire()
@@ -34,7 +34,7 @@ public class PlayerWeapon : MonoBehaviour
             //Spawn bullet.
             GameObject bullet = Instantiate(bulletPrefab, SpawnPosition, Rotation);
             //Set scorekeeper to the one we have.
-            bullet.GetComponent<BulletTrigger>().scoreKeeper = scoreKeeper;
+            bullet.GetComponent<BulletTrigger>().gameKeeper = gameKeeper;
 
             //Set cooldown.
             cooldownEnd = Time.time + weaponCooldown;
