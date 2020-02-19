@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using Unity.Entities;
 
+/*
+ * Handles bullet logic for colliding with enemies.
+ */
 public class BulletTrigger : MonoBehaviour
 {
     //Cached enemylayer.
@@ -9,7 +12,7 @@ public class BulletTrigger : MonoBehaviour
     //Our gameobjectentity.
     GameObjectEntity gameObjectEntity;
 
-    //Cached scorekeeper.
+    //Cached gameKeeper.
     public GameKeeper gameKeeper;
 
     private void Start()
@@ -20,23 +23,33 @@ public class BulletTrigger : MonoBehaviour
             enemyLayer = LayerMask.NameToLayer("Enemy");
         }
 
+        //Get our GameObjectEntity.
         gameObjectEntity = GetComponent<GameObjectEntity>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //If we hit an enemy destroy it and ourselves.
+        //Check if we hit an enemy.
         if(other.gameObject.layer == enemyLayer)
         {
+            //Add score for destroying asteroid.
+            gameKeeper.scoreKeeper.AddScore(gameKeeper.scoreRewards.ScoreDestroyedAsteroid);
+            //Spawn score popup text where the enemy was.
+            gameKeeper.SpawnPopupText(other.transform.position, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString());
+
+            //Get the GameObjectEntity of the other object.
             GameObjectEntity enemyObjEntity = other.GetComponent<GameObjectEntity>();
             if(enemyObjEntity != null)
             {
+
+                //Mark both object for destroy using DestroyComponent.
                 enemyObjEntity.EntityManager.AddComponent<DestroyComponent>(enemyObjEntity.Entity);
                 gameObjectEntity.EntityManager.AddComponent<DestroyComponent>(gameObjectEntity.Entity);
-
-                //Add score for destroying asteroid.
-                gameKeeper.scoreKeeper.AddScore(gameKeeper.scoreRewards.ScoreDestroyedAsteroid);
-                gameKeeper.SpawnPopupText(other.transform.position, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString());
+            }
+            else
+            {
+                //If there isn't a gameobject entity let's just destroy it anyway.
+                Destroy(other.gameObject);
             }
         }
     }

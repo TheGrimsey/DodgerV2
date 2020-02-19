@@ -4,24 +4,29 @@ using UnityEngine.InputSystem;
 public class PlayerWeapon : MonoBehaviour
 {
     [Header("Weapon Properties")]
+    //How long the weapon will remain on cooldown for.
     [SerializeField]
     float weaponCooldown = 0.1f;
+    //Time when the current cooldown will end.
     [SerializeField]
     float cooldownEnd = 0f;
 
     [Header("Bullet Spawn")]
+    //How far infront of the player the bullet will spawn.
     [SerializeField]
     float yOffset = 1f;
 
+    //Bullet Prefab.
     [SerializeField]
     public GameObject bulletPrefab;
 
     GameKeeper gameKeeper;
-    void Awake()
+    void Start()
     {
         gameKeeper = GameKeeper.GetGameKeeper();
     }
 
+    //Spawns a bullet infront of the player if their weapon isn't on cooldown.
     void Fire()
     {
         if(Time.time >= cooldownEnd)
@@ -40,6 +45,8 @@ public class PlayerWeapon : MonoBehaviour
             cooldownEnd = Time.time + weaponCooldown;
         }
     }
+
+    //Called when Player presses fire button.
     public void FireAction(InputAction.CallbackContext context)
     {
         Fire();

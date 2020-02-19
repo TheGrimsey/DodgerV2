@@ -2,10 +2,16 @@
 using Unity.Entities;
 using Unity.Mathematics;
 
+/*
+ * Holds data relatated to movement.
+ * Used by MovementSystem
+ */
 [Serializable]
 [GenerateAuthoringComponent]
 public struct MovementComponent : IComponentData
 {
+    //Movement Speed.
     public float MovementSpeed;
+    //Movement relative to local space for entity.
     public float3 RelativeMovementDirection;
 }

@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/*
+ * Handles player collision with enemies.
+ */
 [RequireComponent(typeof(CircleCollider2D))]
 public class PlayerCollision : MonoBehaviour
 {
