@@ -621,11 +621,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameKeeper
       objectReference: {fileID: 0}
-    - target: {fileID: 5194646778503015745, guid: 2b06eefa3e712f949b226673808ac2d5,
-        type: 3}
-      propertyPath: m_TagString
-      value: GameKeeper
-      objectReference: {fileID: 0}
     - target: {fileID: 5194646778503015750, guid: 2b06eefa3e712f949b226673808ac2d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -681,18 +676,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9131721467944990309, guid: 2b06eefa3e712f949b226673808ac2d5,
-        type: 3}
-      propertyPath: gameData
-      value: 
-      objectReference: {fileID: 11400000, guid: 7c0e18da13e757747aa8881a70a8dab7,
-        type: 2}
-    - target: {fileID: 9131721467944990309, guid: 2b06eefa3e712f949b226673808ac2d5,
-        type: 3}
-      propertyPath: scoreRewards
-      value: 
-      objectReference: {fileID: 11400000, guid: 5ba1d9a2539d6494e850aad61bfefbb9,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b06eefa3e712f949b226673808ac2d5, type: 3}
 --- !u!1001 &5780532583272639660
@@ -702,17 +685,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 983163431005581952, guid: 4294d5a6d23f17647857837e894c2d5f,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 2283047991861338018, guid: 4294d5a6d23f17647857837e894c2d5f,
-        type: 3}
-      propertyPath: popupTextPrefab
-      value: 
-      objectReference: {fileID: 3223330585106237587, guid: 0806ba86efc6dea4fb7f63ef89404a78,
-        type: 3}
     - target: {fileID: 2756169594812184083, guid: 4294d5a6d23f17647857837e894c2d5f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -823,21 +795,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 9155297695969927724, guid: 4294d5a6d23f17647857837e894c2d5f,
-        type: 3}
-      propertyPath: m_FontData.m_HorizontalOverflow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155297695969927724, guid: 4294d5a6d23f17647857837e894c2d5f,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155297695969927724, guid: 4294d5a6d23f17647857837e894c2d5f,
-        type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4294d5a6d23f17647857837e894c2d5f, type: 3}
 --- !u!1001 &7868542858644297241
@@ -847,17 +804,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -462081925862330519, guid: 0345542b026cd704faaa2dd2bbd711e2,
-        type: 3}
-      propertyPath: TurnSpeedDeg
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
-        type: 3}
-      propertyPath: m_Actions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 4eb66328b67564b40ad045d06ac131c7,
-        type: 3}
     - target: {fileID: 2498108385144890462, guid: 0345542b026cd704faaa2dd2bbd711e2,
         type: 3}
       propertyPath: m_Name

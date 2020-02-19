@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4513530513651219805}
   m_Layer: 0
   m_Name: GameKeeper
-  m_TagString: Untagged
+  m_TagString: GameKeeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,3 +46,5 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: 7c0e18da13e757747aa8881a70a8dab7, type: 2}
   scoreRewards: {fileID: 11400000, guid: 5ba1d9a2539d6494e850aad61bfefbb9, type: 2}
   scoreKeeper: {fileID: 11400000, guid: f8cbcce7b40b92f49a8cdf3d09411908, type: 2}
+  hud: {fileID: 0}
+  playerHealth: 3
