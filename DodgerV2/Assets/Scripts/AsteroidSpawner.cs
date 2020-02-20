@@ -8,6 +8,10 @@ public class AsteroidSpawner : MonoBehaviour
      * Timings.
      */
     [Header("Timings")]
+    //Delay before first asteroid spawns.
+    [SerializeField]
+    float StartDelay = 5f;
+
     [SerializeField]
     float TimeBetweenSpawns = 3f;
     [SerializeField]
@@ -33,6 +37,12 @@ public class AsteroidSpawner : MonoBehaviour
     float ArenaWidth = 9f;
 
     [SerializeField]
+    float MinScale = 1f;
+
+    [SerializeField]
+    float MaxScale = 1.7f;
+
+    [SerializeField]
     float HeightVariance = 10f;
 
     [SerializeField]
@@ -44,6 +54,11 @@ public class AsteroidSpawner : MonoBehaviour
     //A value between this value and 0 is applied to rotation to pull it closer to 0.
     [SerializeField]
     float RotationNormalizingWeight = 20f;
+
+    void Start()
+    {
+        NextSpawnTime = StartDelay;    
+    }
 
     void Update()
     {
@@ -61,9 +76,10 @@ public class AsteroidSpawner : MonoBehaviour
 
         for (int i = 0; i < AsteroidsToSpawn; i++)
         {
+            //Randomize position.
             Vector3 position = new Vector3(transform.position.x + Random.Range(-ArenaWidth/2,ArenaWidth/2), transform.position.y + Random.Range(-HeightVariance/2, HeightVariance/2));
 
-            //Randomize rotation.
+            //Randomize Z-rotation.
             float ZRotation = Random.Range(MinSpawnRotation, MaxSpawnRotation);
             //Pull rotation closer to 0.
             if(ZRotation < 0)
@@ -75,9 +91,15 @@ public class AsteroidSpawner : MonoBehaviour
                 ZRotation -= Random.Range(0, Mathf.Min(RotationNormalizingWeight, Mathf.Abs(ZRotation)));
             }
 
+            //Assemble rotation.
             Quaternion rotation = Quaternion.Euler(0,0, ZRotation);
 
-            Instantiate(AsteroidPrefab, position, rotation);
+            //Spawn asteroid object.
+            GameObject Asteroid = Instantiate(AsteroidPrefab, position, rotation);
+
+            float Scale = Random.Range(MinScale, MaxScale);
+
+            Asteroid.transform.localScale = new Vector3(Scale, Scale, 1);
         }
     }
 }

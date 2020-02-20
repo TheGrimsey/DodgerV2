@@ -16,9 +16,9 @@ public class PopupText : MonoBehaviour
         damageText = GetComponent<Text>();
     }
 
-    public void SetText(string Text)
+    public void SetText(string Text, Color TextColor)
     {
         damageText.text = Text;
-
+        damageText.color = TextColor;
     }
 }

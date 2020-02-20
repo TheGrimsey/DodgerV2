@@ -35,22 +35,11 @@ public class BulletTrigger : MonoBehaviour
             //Add score for destroying asteroid.
             gameKeeper.scoreKeeper.AddScore(gameKeeper.scoreRewards.ScoreDestroyedAsteroid);
             //Spawn score popup text where the enemy was.
-            gameKeeper.SpawnPopupText(other.transform.position, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString());
+            gameKeeper.SpawnPopupText(other.transform.position, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString(), Color.green);
 
-            //Get the GameObjectEntity of the other object.
-            GameObjectEntity enemyObjEntity = other.GetComponent<GameObjectEntity>();
-            if(enemyObjEntity != null)
-            {
-
-                //Mark both object for destroy using DestroyComponent.
-                enemyObjEntity.EntityManager.AddComponent<DestroyComponent>(enemyObjEntity.Entity);
-                gameObjectEntity.EntityManager.AddComponent<DestroyComponent>(gameObjectEntity.Entity);
-            }
-            else
-            {
-                //If there isn't a gameobject entity let's just destroy it anyway.
-                Destroy(other.gameObject);
-            }
+            //Destroy enemy and self.
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

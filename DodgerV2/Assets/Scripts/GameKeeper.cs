@@ -41,9 +41,9 @@ public class GameKeeper : MonoBehaviour
     }
 
     //Spawns a popuptext at worldPosition with text.
-    public void SpawnPopupText(Vector2 worldPosition, string text)
+    public void SpawnPopupText(Vector2 worldPosition, string text, Color color)
     {
-        hud.SpawnPopupText(worldPosition, text);
+        hud.SpawnPopupText(worldPosition, text, color);
     }
 
     //Starts a new round.

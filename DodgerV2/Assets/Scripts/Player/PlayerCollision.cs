@@ -25,6 +25,16 @@ public class PlayerCollision : MonoBehaviour
         {
             //Notify gameKeeper we got hit.
             gameKeeper.OnPlayerHit();
+
+            //Spawn popup text notifying we got hit.
+            {
+                //Pick position right between us and them.
+                Vector3 textPosition = gameObject.transform.position - (gameObject.transform.position - collider.gameObject.transform.position) / 2;
+
+                gameKeeper.SpawnPopupText(textPosition, "HIT", Color.red);
+            }
+
+            Destroy(collider.gameObject);
         }
     }
 }

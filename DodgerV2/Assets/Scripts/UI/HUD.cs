@@ -13,6 +13,9 @@ public class HUD : MonoBehaviour
     //Text widget that should hold score text.
     public Text ScoreText;
 
+    //Slider for health bar.
+    public Slider HealthSlider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +26,12 @@ public class HUD : MonoBehaviour
     void Update()
     {
         ScoreText.text = gameKeeper.scoreKeeper.CurrentScore.ToString();
+
+        HealthSlider.maxValue = gameKeeper.MaxPlayerHealth;
+        HealthSlider.value = gameKeeper.PlayerHealth;
     }
 
-    public void SpawnPopupText(Vector2 worldPosition, string text)
+    public void SpawnPopupText(Vector2 worldPosition, string text, Color color)
     {
         // Calculate *screen* position (note, not a canvas/recttransform position)
         Vector2 screenPoint = Camera.main.WorldToScreenPoint(worldPosition);
@@ -35,6 +41,6 @@ public class HUD : MonoBehaviour
         popupText.transform.SetParent(transform);
         popupText.transform.position = screenPoint;
 
-        popupText.GetComponent<PopupText>().SetText(text);
+        popupText.GetComponent<PopupText>().SetText(text, color);
     }
 }
