@@ -2,6 +2,8 @@
 
 public class AsteroidSpawner : MonoBehaviour
 {
+    GameKeeper gameKeeper;
+
     public GameObject AsteroidPrefab;
 
     /*
@@ -57,17 +59,19 @@ public class AsteroidSpawner : MonoBehaviour
 
     void Start()
     {
+        gameKeeper = GameKeeper.GetGameKeeper();
+
         NextSpawnTime = StartDelay;    
     }
 
     void Update()
     {
-        if(Time.time > NextSpawnTime)
+        if(gameKeeper.GameTime > NextSpawnTime)
         {
             SpawnAsteroids();
 
             //Randomize out next spawn time.
-            NextSpawnTime = Time.time + (TimeBetweenSpawns + Random.Range(-TimeVariance, TimeVariance));
+            NextSpawnTime = gameKeeper.GameTime + (TimeBetweenSpawns + Random.Range(-TimeVariance, TimeVariance));
         }
     }
     void SpawnAsteroids()

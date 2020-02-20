@@ -12,10 +12,13 @@ public class BulletTrigger : MonoBehaviour
     //Our gameobjectentity.
     GameObjectEntity gameObjectEntity;
 
+    //Our spriterenderer;
+    SpriteRenderer spriteRenderer;
+
     //Cached gameKeeper.
     public GameKeeper gameKeeper;
 
-    private void Start()
+    private void Awake()
     {
         //Cache EnemyLayer if we haven't already.
         if (enemyLayer == -1)
@@ -25,20 +28,28 @@ public class BulletTrigger : MonoBehaviour
 
         //Get our GameObjectEntity.
         gameObjectEntity = GetComponent<GameObjectEntity>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Check if we hit an enemy.
-        if(other.gameObject.layer == enemyLayer)
+        //Check if we hit an enemy and if we are visible. We don't want to be able to shoot out of the scene.
+        if(other.gameObject.layer == enemyLayer && spriteRenderer.isVisible)
         {
             //Add score for destroying asteroid.
             gameKeeper.scoreKeeper.AddScore(gameKeeper.scoreRewards.ScoreDestroyedAsteroid);
-            //Spawn score popup text where the enemy was.
-            gameKeeper.SpawnPopupText(other.transform.position, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString(), Color.green);
 
-            //Destroy enemy and self.
+            //Pick position right between us and them.
+            Vector3 textPosition = gameObject.transform.position - (gameObject.transform.position - other.gameObject.transform.position) / 2;
+
+            //Spawn score popup text where the enemy was.
+            gameKeeper.SpawnPopupText(textPosition, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString(), Color.green);
+
+            //Destroy enemy.
             Destroy(other.gameObject);
+
+            //Destroy self.
             Destroy(this.gameObject);
         }
     }

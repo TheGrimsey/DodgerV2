@@ -10,11 +10,11 @@ public class GameData : ScriptableObject
 
     public void GoToGameScene()
     {
-        SceneManager.LoadScene(GameMapName);
+        SceneManager.LoadScene(GameMapName, LoadSceneMode.Single);
     }
 
     public void GoToMainMenuScene()
     {
-        SceneManager.LoadScene(MainMenuMapName);
+        SceneManager.LoadScene(MainMenuMapName, LoadSceneMode.Single);
     }
 }

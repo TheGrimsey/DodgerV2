@@ -7,8 +7,8 @@ public class PlayerWeapon : MonoBehaviour
     //How long the weapon will remain on cooldown for.
     [SerializeField]
     float weaponCooldown = 0.1f;
+
     //Time when the current cooldown will end.
-    [SerializeField]
     float cooldownEnd = 0f;
 
     [Header("Bullet Spawn")]
@@ -29,8 +29,10 @@ public class PlayerWeapon : MonoBehaviour
     //Spawns a bullet infront of the player if their weapon isn't on cooldown.
     void Fire()
     {
-        if(Time.time >= cooldownEnd)
+        if(gameKeeper.GameTime >= cooldownEnd)
         {
+            Debug.Log("Spawning bullet");
+
             //Calculate where to put the bullet.
             Vector2 SpawnPosition = transform.position + (yOffset * transform.up);
             //Use same rotation as player ship.
@@ -42,7 +44,7 @@ public class PlayerWeapon : MonoBehaviour
             bullet.GetComponent<BulletTrigger>().gameKeeper = gameKeeper;
 
             //Set cooldown.
-            cooldownEnd = Time.time + weaponCooldown;
+            cooldownEnd = gameKeeper.GameTime + weaponCooldown;
         }
     }
 

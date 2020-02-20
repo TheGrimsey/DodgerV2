@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Unity.Entities;
 public class GameKeeper : MonoBehaviour
 {
     //GameData. Holds MainMenu and Game map names.
@@ -24,9 +24,18 @@ public class GameKeeper : MonoBehaviour
     int currentPlayerHealth = 3;
     public int PlayerHealth => currentPlayerHealth;
 
-    void Awake()
+    [SerializeField]
+    float gameTime = 0f;
+    public float GameTime => gameTime;
+
+    void Start()
     {
         StartRound();
+    }
+
+    void Update()
+    {
+        gameTime += Time.deltaTime;
     }
 
     //Called when a player is hit by an enemy.
@@ -52,6 +61,8 @@ public class GameKeeper : MonoBehaviour
         scoreKeeper.ResetCurrentScore();
 
         currentPlayerHealth = MaxPlayerHealth;
+
+        gameTime = 0f;
     }
 
     //Ends the current round.
@@ -59,6 +70,11 @@ public class GameKeeper : MonoBehaviour
     {
         scoreKeeper.SaveScores();
 
+        //Destroy all entities.
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        entityManager.DestroyEntity(entityManager.UniversalQuery);
+
+        gameTime = 0f;
         gameData.GoToMainMenuScene();
     }
 

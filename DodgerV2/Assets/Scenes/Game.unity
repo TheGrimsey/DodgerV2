@@ -133,6 +133,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8e285869a7ce84a885639a2140c06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &533106253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7179298813989579792, guid: 4c8257ff0c18d9442b1b8f14c8d7b0c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1336172522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &533106254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533106253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9efe88745b67f4e99805781cb8ef90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAspectRatio: 1.7777778
 --- !u!1 &748656264
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,15 +314,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AsteroidPrefab: {fileID: 7542433547113511627, guid: 661526b8f7810a543b41e1c7d352ea8f,
     type: 3}
+  StartDelay: 5
   TimeBetweenSpawns: 4
   TimeVariance: 1
   NextSpawnTime: 0
-  AsteroidSpawnCount: 5
+  AsteroidSpawnCount: 6
   AsteroidSpawnVariance: 3
-  ArenaWidth: 10
-  HeightVariance: 10
-  MinSpawnRotation: -35
-  MaxSpawnRotation: 35
+  ArenaWidth: 11
+  MinScale: 1
+  MaxScale: 1.7
+  HeightVariance: 5
+  MinSpawnRotation: -45
+  MaxSpawnRotation: 45
   RotationNormalizingWeight: 30
 --- !u!4 &1499874929
 Transform:
@@ -313,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499874927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -556,8 +578,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RepeatDelay: 0.5
   m_RepeatRate: 0.1
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018,
@@ -580,6 +600,9 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceSelectAction: {fileID: 2559092417903258184, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
 --- !u!114 &2038174444
 MonoBehaviour:
   m_ObjectHideFlags: 0
