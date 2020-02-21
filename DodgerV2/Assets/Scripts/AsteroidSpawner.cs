@@ -14,11 +14,14 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField]
     float StartDelay = 5f;
 
+    //Time between each Asteroid spawn.
     [SerializeField]
     float TimeBetweenSpawns = 3f;
+    //Variance in time between spawns.
     [SerializeField]
     float TimeVariance = 1f;
 
+    //Next time we will spawn asteroids.
     [SerializeField]
     float NextSpawnTime = 0f;
 
@@ -26,8 +29,10 @@ public class AsteroidSpawner : MonoBehaviour
      * Counts
      */
     [Header("Counts")]
+    //Amount of asteroids to spawn.
     [SerializeField]
     int AsteroidSpawnCount = 7;
+    //Variance in amount of asteroids to spawn.
     [SerializeField]
     int AsteroidSpawnVariance = 3;
 
@@ -38,24 +43,29 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField]
     float ArenaWidth = 9f;
 
+    //Minimum scale of spawned asteroids.
     [SerializeField]
     float MinScale = 1f;
 
+    //Maximum scale of spawned asteroids.
     [SerializeField]
     float MaxScale = 1.7f;
 
+    //Variance in height from the spawner that asteroids will spawn.
     [SerializeField]
-    float HeightVariance = 10f;
+    float HeightVariance = 5f;
 
+    //Minimum Z rotation of asteroids
     [SerializeField]
-    float MinSpawnRotation = -35f;
+    float MinSpawnRotation = -45f;
 
+    //Maximum Z rotation of asteroids
     [SerializeField]
-    float MaxSpawnRotation = 35f;
+    float MaxSpawnRotation = 45f;
 
     //A value between this value and 0 is applied to rotation to pull it closer to 0.
     [SerializeField]
-    float RotationNormalizingWeight = 20f;
+    float RotationNormalizingWeight = 30f;
 
     void Start()
     {
@@ -101,8 +111,8 @@ public class AsteroidSpawner : MonoBehaviour
             //Spawn asteroid object.
             GameObject Asteroid = Instantiate(AsteroidPrefab, position, rotation);
 
+            //Scale asteroids
             float Scale = Random.Range(MinScale, MaxScale);
-
             Asteroid.transform.localScale = new Vector3(Scale, Scale, 1);
         }
     }

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Unity.Entities;
+﻿using Unity.Entities;
+using UnityEngine;
 public class GameKeeper : MonoBehaviour
 {
     //GameData. Holds MainMenu and Game map names.
@@ -43,7 +43,7 @@ public class GameKeeper : MonoBehaviour
     {
         currentPlayerHealth--;
 
-        if(currentPlayerHealth == 0)
+        if (currentPlayerHealth == 0)
         {
             EndRound();
         }
