@@ -27,7 +27,7 @@ public class PlayerWeapon : MonoBehaviour
     }
 
     //Spawns a bullet infront of the player if their weapon isn't on cooldown.
-    void Fire()
+    public void Fire()
     {
         if(gameKeeper.GameTime >= cooldownEnd)
         {

@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
     float TurnSpeedDeg = 90f;
 
     //Last Movement Input. Determines direction of movement.
-    [SerializeField]
-    Vector2 MovementInput;
+    public Vector2 MovementInput;
 
-    //Last rotation input. Determines direction of rotation.
-    [SerializeField]
-    float RotationInput;
+    //Rotation input. Determines Z rotation.
+    public float RotationInput = 0;
+
+    //The Z rotation to set us to during Update()
+    public float TargetZRotation = 0;
 
     Rigidbody2D _rigidbody2D;
 
@@ -33,16 +34,25 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Add force based on movement input and speed.
         _rigidbody2D.AddForce(MovementInput * MovementSpeed * Time.deltaTime, ForceMode2D.Impulse);
 
+        //If we have rotation input add it onto the targetZrotation.
+        if(RotationInput != 0)
+        {
+            TargetZRotation += RotationInput * TurnSpeedDeg * Time.deltaTime;
+        }
 
         //Rotate based on rotationinput and rotation speed.
-        Vector3 Rotation = new Vector3(0, 0, RotationInput * TurnSpeedDeg * Time.deltaTime);
-        transform.Rotate(Rotation);
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, TargetZRotation));
     }
+
+    /*
+     * Keyboard Input
+     * TODO Move to different class?
+     */
 
     //Called when player presses any of the move keys.
     public void Move(InputAction.CallbackContext context)

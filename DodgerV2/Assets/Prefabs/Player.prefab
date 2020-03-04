@@ -124,6 +124,7 @@ MonoBehaviour:
   TurnSpeedDeg: 360
   MovementInput: {x: 0, y: 0}
   RotationInput: 0
+  TargetZRotation: 0
 --- !u!114 &2169482838724773321
 MonoBehaviour:
   m_ObjectHideFlags: 0
