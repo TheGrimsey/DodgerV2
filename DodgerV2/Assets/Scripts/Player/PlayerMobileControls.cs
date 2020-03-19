@@ -27,16 +27,22 @@ public class PlayerMobileControls : MonoBehaviour
          * Movement
          */
         //Set MovementInput based on this.
-        playerMovement.MovementInput = movementJoystick.Direction;
+        if(movementJoystick.Direction != Vector2.zero)
+        {
+            playerMovement.MovementInput = movementJoystick.Direction;
+        }
 
         /*
          * Rotation
          */
-        //Calculate target rotation.
-        Vector3 TargetRotation = Quaternion.LookRotation(Vector3.forward, rotationJoystick.Direction).eulerAngles;
-        
-        //Set TargetZRotation
-        playerMovement.TargetZRotation = TargetRotation.z;
+         if(rotationJoystick.Direction != Vector2.zero)
+        {
+            //Calculate target rotation.
+            Vector3 TargetRotation = Quaternion.LookRotation(Vector3.forward, rotationJoystick.Direction).eulerAngles;
+
+            //Set TargetZRotation
+            playerMovement.TargetZRotation = TargetRotation.z;
+        }
     }
 
     public void OnFireButtonClicked()

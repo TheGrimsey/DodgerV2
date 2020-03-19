@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8650656206136429629}
-  - component: {fileID: 2221004645457329230}
   - component: {fileID: 8365388723959407557}
   - component: {fileID: -462081925862330519}
   - component: {fileID: 2169482838724773321}
@@ -37,27 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &2221004645457329230
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2498108385144890462}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.95033187
-  m_LinearDrag: 0.5
-  m_AngularDrag: 5
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &8365388723959407557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -120,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb77ddee26ef93b46b75eceb31a00eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 8
+  MovementSpeed: 8.5
   TurnSpeedDeg: 360
   MovementInput: {x: 0, y: 0}
   RotationInput: 0
@@ -229,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85c4b1d5c38bdd498963dfcea9cab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCooldown: 0.3
+  weaponCooldown: 0.4
   yOffset: 1
   bulletPrefab: {fileID: 5994968671655944398, guid: e1069111fbc50724f97da7a642d5a096,
     type: 3}

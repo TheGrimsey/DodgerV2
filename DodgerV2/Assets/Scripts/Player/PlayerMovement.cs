@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 /*
  * Handles player movement.
  */
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
@@ -25,19 +24,30 @@ public class PlayerMovement : MonoBehaviour
     //The Z rotation to set us to during Update()
     public float TargetZRotation = 0;
 
-    Rigidbody2D _rigidbody2D;
+    CircleCollider2D circleCollider2D;
 
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Add force based on movement input and speed.
-        _rigidbody2D.AddForce(MovementInput * MovementSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        //Calculate how far we should move.
+        Vector3 movementDistance = MovementInput * MovementSpeed * Time.deltaTime;
+
+        //Raycast for movement.
+
+        Collider2D hitCollider = Physics2D.OverlapCircle(gameObject.transform.position + movementDistance, circleCollider2D.radius, 1 << LayerMask.NameToLayer("Default"));
+
+        //Check so we didnt hit anything
+        if(hitCollider == null)
+        {
+            //If we didnt then we can move.
+            transform.Translate(movementDistance, Space.World);
+        }
 
         //If we have rotation input add it onto the targetZrotation.
         if(RotationInput != 0)

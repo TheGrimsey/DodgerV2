@@ -3,7 +3,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 /*
- * Holds data relatated to movement.
+ * Holds data related to movement.
  * Used by MovementSystem
  */
 [Serializable]
