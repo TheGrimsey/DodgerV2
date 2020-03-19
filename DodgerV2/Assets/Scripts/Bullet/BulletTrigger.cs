@@ -37,14 +37,16 @@ public class BulletTrigger : MonoBehaviour
         //Check if we hit an enemy and if we are visible. We don't want to be able to shoot out of the scene.
         if(other.gameObject.layer == enemyLayer && spriteRenderer.isVisible)
         {
+            int ScoreReward = (int)(gameKeeper.scoreRewards.ScoreDestroyedAsteroid / other.gameObject.transform.localScale.x);
+
             //Add score for destroying asteroid.
-            gameKeeper.scoreKeeper.AddScore(gameKeeper.scoreRewards.ScoreDestroyedAsteroid);
+            gameKeeper.scoreKeeper.AddScore(ScoreReward);
 
             //Pick position right between us and them.
             Vector3 textPosition = gameObject.transform.position - (gameObject.transform.position - other.gameObject.transform.position) / 2;
 
             //Spawn score popup text where the enemy was.
-            gameKeeper.SpawnPopupText(textPosition, gameKeeper.scoreRewards.ScoreDestroyedAsteroid.ToString(), Color.green);
+            gameKeeper.SpawnPopupText(textPosition, ScoreReward.ToString(), Color.green);
 
             //Destroy enemy.
             Destroy(other.gameObject);

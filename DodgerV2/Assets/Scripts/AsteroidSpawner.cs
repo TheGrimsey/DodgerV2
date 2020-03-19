@@ -16,10 +16,14 @@ public class AsteroidSpawner : MonoBehaviour
 
     //Time between each Asteroid spawn.
     [SerializeField]
-    float TimeBetweenSpawns = 3f;
+    float TimeBetweenSpawns = 4f;
     //Variance in time between spawns.
     [SerializeField]
     float TimeVariance = 1f;
+
+    //Minimum time between spawns.
+    [SerializeField]
+    float MinTime = .5f;
 
     //Next time we will spawn asteroids.
     [SerializeField]
@@ -81,7 +85,7 @@ public class AsteroidSpawner : MonoBehaviour
             SpawnAsteroids();
 
             //Randomize out next spawn time.
-            NextSpawnTime = gameKeeper.GameTime + (TimeBetweenSpawns + Random.Range(-TimeVariance, TimeVariance));
+            NextSpawnTime = CalculateNextSpawnTime();
         }
     }
     void SpawnAsteroids()
@@ -115,5 +119,14 @@ public class AsteroidSpawner : MonoBehaviour
             float Scale = Random.Range(MinScale, MaxScale);
             Asteroid.transform.localScale = new Vector3(Scale, Scale, 1);
         }
+    }
+
+    float CalculateNextSpawnTime()
+    {
+        // TimeBetweenSpawns - 0.01x^1.25. With 4 seconds this gives the player ~120.7 seconds before there is a spawn every tick. But with a MinTime of 1 it ends up being about 95 seconds.
+        float AdjustedTimeBetweenSpawns = TimeBetweenSpawns - (0.01f * Mathf.Pow(gameKeeper.GameTime, 1.25f));
+        Debug.Log(AdjustedTimeBetweenSpawns);
+
+        return gameKeeper.GameTime + Mathf.Max(MinTime, AdjustedTimeBetweenSpawns + Random.Range(-TimeVariance, TimeVariance));
     }
 }

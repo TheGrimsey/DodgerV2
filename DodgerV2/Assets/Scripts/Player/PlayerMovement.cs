@@ -19,13 +19,9 @@ public class PlayerMovement : MonoBehaviour
     //Last Movement Input. Determines direction of movement.
     public Vector2 MovementInput;
 
-    //Rotation input. Determines Z rotation.
-    public float RotationInput = 0;
-
-    //The Z rotation to set us to during Update()
-    public float TargetZRotation = 0;
-
     public bool TouchControlsEnabled = false;
+
+    private bool FirstUpdate = true;
 
     public delegate void OnTouchControlsToggled();
     public event OnTouchControlsToggled OnTouchEnabledListeners;
@@ -37,12 +33,20 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
-        SetTouchControlsEnabled(Application.isMobilePlatform, true);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Handle things that need to be done on the first update.
+        if(FirstUpdate)
+        {
+            //Enable or disable touch controls.
+            SetTouchControlsEnabled(Application.isMobilePlatform, true);
+
+            FirstUpdate = false;
+        }
+
         //Calculate how far we should move.
         Vector3 movementDistance = MovementInput * MovementSpeed * Time.deltaTime;
 
@@ -56,15 +60,6 @@ public class PlayerMovement : MonoBehaviour
             //If we didnt then we can move.
             transform.Translate(movementDistance, Space.World);
         }
-
-        //If we have rotation input add it onto the targetZrotation.
-        if (RotationInput != 0)
-        {
-            TargetZRotation += RotationInput * TurnSpeedDeg * Time.deltaTime;
-        }
-
-        //Rotate based on rotationinput and rotation speed.
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, TargetZRotation));
     }
 
     /*
