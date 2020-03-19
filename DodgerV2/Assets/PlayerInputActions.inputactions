@@ -14,18 +14,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Rotate",
-                    "type": "Value",
-                    "id": "649ad69b-5d5e-4b69-b02f-c2ee6794d298",
-                    "expectedControlType": "",
-                    "processors": "NormalizeVector2",
-                    "interactions": ""
-                },
-                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "f38d115d-83c7-4b76-9913-6de8d106cf88",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "e069cab0-c2ba-4ec6-93b4-7280dd2a2ac2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -87,37 +87,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Arrows",
-                    "id": "4f8ef1df-7119-47af-9369-2c07a02caf9b",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "229b6660-9b93-44d8-ae4d-b548f5e12310",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
-                    "isComposite": true,
+                    "action": "Move",
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "e8989e7e-4bde-4189-a3d2-31d4ad9b1f55",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "724e2232-860e-4d4c-bb11-4e80e8834a14",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -127,6 +105,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "853dab9a-c61f-4a96-9278-1c01fae03ff7",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "385ab5e8-3e4b-4232-8f8a-d89134b07e33",
+                    "path": "<Touchscreen>/touch0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

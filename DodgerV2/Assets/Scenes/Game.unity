@@ -209,6 +209,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 12}
   m_EdgeRadius: 0
+--- !u!114 &980830548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -376694607766910884, guid: 0345542b026cd704faaa2dd2bbd711e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7868542858644297241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85c4b1d5c38bdd498963dfcea9cab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &980830551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -462081925862330519, guid: 0345542b026cd704faaa2dd2bbd711e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7868542858644297241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb77ddee26ef93b46b75eceb31a00eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1336172522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,12 +345,12 @@ MonoBehaviour:
   AsteroidSpawnCount: 6
   AsteroidSpawnVariance: 1
   ArenaWidth: 11
-  MinScale: 1
+  MinScale: 0.7
   MaxScale: 1.7
-  HeightVariance: 0
+  HeightVariance: 2
   MinSpawnRotation: -20
   MaxSpawnRotation: 20
-  RotationNormalizingWeight: 20
+  RotationNormalizingWeight: 15
 --- !u!4 &1499874929
 Transform:
   m_ObjectHideFlags: 0
@@ -718,6 +742,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851261087, guid: 4294d5a6d23f17647857837e894c2d5f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851261087, guid: 4294d5a6d23f17647857837e894c2d5f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851261087, guid: 4294d5a6d23f17647857837e894c2d5f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 82dfd344058053a4bb4ad2207ca12c7b, type: 2}
     - target: {fileID: 1988979128049491992, guid: 4294d5a6d23f17647857837e894c2d5f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -838,6 +874,71 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 4498800333548046948, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 82dfd344058053a4bb4ad2207ca12c7b, type: 2}
+    - target: {fileID: 4498800333548046948, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498800333548046948, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033162513694380153, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 7baaf81b60a9be84f9eb44943f266252, type: 2}
+    - target: {fileID: 5033162513694380153, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033162513694380153, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033162513694380153, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691481829935326697, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 82dfd344058053a4bb4ad2207ca12c7b, type: 2}
+    - target: {fileID: 8691481829935326697, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691481829935326697, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155297695969927724, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 82dfd344058053a4bb4ad2207ca12c7b, type: 2}
+    - target: {fileID: 9155297695969927724, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155297695969927724, guid: 4294d5a6d23f17647857837e894c2d5f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4294d5a6d23f17647857837e894c2d5f, type: 3}
 --- !u!1001 &7868542858644297241
@@ -847,6 +948,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -462081925862330519, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: TouchControlsEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 980830548}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FireAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: f38d115d-83c7-4b76-9913-6de8d106cf88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: Default/Fire[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 980830551}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: e069cab0-c2ba-4ec6-93b4-7280dd2a2ac2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169482838724773321, guid: 0345542b026cd704faaa2dd2bbd711e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Default/Touch
+      objectReference: {fileID: 0}
     - target: {fileID: 2498108385144890462, guid: 0345542b026cd704faaa2dd2bbd711e2,
         type: 3}
       propertyPath: m_Name

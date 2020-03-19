@@ -4,8 +4,6 @@ public class PlayerMobileControls : MonoBehaviour
 {
     public Joystick movementJoystick;
 
-    public Joystick rotationJoystick;
-
     [SerializeField]
     PlayerMovement playerMovement;
 
@@ -18,6 +16,9 @@ public class PlayerMobileControls : MonoBehaviour
 
         playerMovement = playerObject.GetComponent<PlayerMovement>();
         playerWeapon = playerObject.GetComponent<PlayerWeapon>();
+
+        playerMovement.OnTouchEnabledListeners += OnTouchControlsEnabled;
+        playerMovement.OnTouchDisabledListeners += OnTouchControlsDisabled;
     }
 
     // Update is called once per frame
@@ -27,26 +28,19 @@ public class PlayerMobileControls : MonoBehaviour
          * Movement
          */
         //Set MovementInput based on this.
-        if(movementJoystick.Direction != Vector2.zero)
-        {
-            playerMovement.MovementInput = movementJoystick.Direction;
-        }
-
-        /*
-         * Rotation
-         */
-         if(rotationJoystick.Direction != Vector2.zero)
-        {
-            //Calculate target rotation.
-            Vector3 TargetRotation = Quaternion.LookRotation(Vector3.forward, rotationJoystick.Direction).eulerAngles;
-
-            //Set TargetZRotation
-            playerMovement.TargetZRotation = TargetRotation.z;
-        }
+        playerMovement.MovementInput = movementJoystick.Direction;
     }
 
     public void OnFireButtonClicked()
     {
         playerWeapon.Fire();
+    }
+    void OnTouchControlsEnabled()
+    {
+        gameObject.SetActive(true);
+    }
+    void OnTouchControlsDisabled()
+    {
+        gameObject.SetActive(false);
     }
 }
